@@ -1,0 +1,19 @@
+CXX = g++
+CXXFLAGS = -Wall -Wextra -pedantic -std=c++11
+
+SRCS = HotDog.cpp
+OBJS = $(SRCS:.cpp=.o)
+MAIN = hotdog
+
+.PHONY: clean
+
+all: $(MAIN)
+
+$(MAIN): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(MAIN)
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJS) $(MAIN)
